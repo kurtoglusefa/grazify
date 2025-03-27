@@ -1,0 +1,13 @@
+{
+  "appTitle": "Grazify",
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Login",
+    "signupButton": "Sign Up"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "thanksReceived": "Thanks Received"
+  }
+}
