@@ -6,7 +6,6 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
     } else {
         console.log('Connected to the SQLite database.');
 
-        // Create users table
         db.run(`
             CREATE TABLE IF NOT EXISTS users
             (
@@ -17,10 +16,8 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
             )
         `);
 
-        // Create index for faster leaderboard queries
         db.run("CREATE INDEX IF NOT EXISTS idx_thanksCount ON users(thanksCount DESC)");
 
-        // Create shouts table for the Shout-Out Wall
         db.run(`
             CREATE TABLE IF NOT EXISTS shouts
             (

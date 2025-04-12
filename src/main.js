@@ -5,7 +5,6 @@ import {createI18n} from "vue-i18n";
 import en from "./locales/en.json";
 import it from "./locales/it.json";
 
-
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
 import "bootstrap";
@@ -19,7 +18,7 @@ import {
 const i18n = createI18n({
     legacy: false,
     globalInjection: true,
-    locale: "en", // Default language
+    locale: "en",
     fallbackLocale: "en",
     messages: {en, it}
 });

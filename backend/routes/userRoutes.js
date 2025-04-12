@@ -10,7 +10,7 @@ const {
     getUserBadges
 } = require("../models/userModel");
 
-// Get all users (for dropdown selection)
+
 router.get("/", (req, res) => {
     getAllUsers((err, users) => {
         if (err) return res.status(500).json({error: err.message});
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// User Login
+
 router.post("/login", async (req, res) => {
     const {name, password} = req.body;
 
@@ -32,11 +32,11 @@ router.post("/login", async (req, res) => {
 
         if (!user) return res.status(401).json({error: "Invalid credentials"});
 
-        // Compare hashed password
+
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) return res.status(401).json({error: "Invalid credentials"});
 
-        // Remove password from response
+
         const {id, thanksCount} = user;
         res.json({message: "Login successful", user: {id, name, thanksCount}});
 
@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// Fetch User Profile
+
 router.get("/profile/:id", (req, res) => {
     const userId = req.params.id;
 
@@ -57,7 +57,7 @@ router.get("/profile/:id", (req, res) => {
     });
 });
 
-// Fetch User Badges
+
 router.get("/profile/:id/badges", (req, res) => {
     const userId = req.params.id;
 
@@ -67,7 +67,7 @@ router.get("/profile/:id/badges", (req, res) => {
     });
 });
 
-// User Registration
+
 router.post("/register", async (req, res) => {
     const {name, password} = req.body;
 
@@ -75,7 +75,7 @@ router.post("/register", async (req, res) => {
         return res.status(400).json({error: "Username and password are required"});
     }
 
-    // Hash the password before storing
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     createUser(name, hashedPassword, (err, id) => {
@@ -84,7 +84,7 @@ router.post("/register", async (req, res) => {
     });
 });
 
-// Increment Thanks Count
+
 router.post("/thanks/:id", (req, res) => {
     const userId = req.params.id;
 

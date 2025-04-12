@@ -6,7 +6,6 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
     }
     console.log('Connected to the SQLite database.');
 
-    // Ensure the users table exists
     db.run(`
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,7 +19,7 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
         } else {
             console.log('Users table verified.');
 
-            // Insert test users
+
             const testUsers = [
                 { name: 'Alice', password: 'password123' },
                 { name: 'Bob', password: 'securepass' },
@@ -44,7 +43,7 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
     });
 });
 
-// Close the database after executing queries
+
 setTimeout(() => {
     db.close(() => {
         console.log('Database connection closed.');

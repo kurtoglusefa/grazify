@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const db = require("../database");
 
-// Get leaderboard with pagination & sorting
+
 router.get("/", (req, res) => {
-    const { page = 1, limit = 5, sort = "thanksCount" } = req.query; // Default values
+    const { page = 1, limit = 5, sort = "thanksCount" } = req.query;
     const offset = (page - 1) * limit;
 
     let orderByClause = "ORDER BY thanksCount DESC";

@@ -14,7 +14,6 @@
         <template #cell(rank)="data">
           <strong>#{{ data.index + 1 }}</strong>
         </template>
-
         <!-- Thanks Count with Badge -->
         <template #cell(thanksCount)="data">
           <b-badge variant="success" pill>{{ data.item.thanksCount }}</b-badge>

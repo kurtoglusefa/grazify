@@ -28,7 +28,7 @@
     <div v-if="showRegisterModal" class="custom-modal-overlay">
       <div class="custom-modal">
         <div class="custom-modal-header">
-          <h2>{{ $t("register.title") }}</h2> <!-- Localized -->
+          <h2>{{ $t("register.title") }}</h2>
           <button class="close-btn" @click="showRegisterModal = false">&times;</button>
         </div>
         <div class="custom-modal-body">
