@@ -1,14 +1,67 @@
-### Test Backend
+### Test Backend Root
 GET http://localhost:3000/
 
-### Test Login
+
+### 🧪 Login User
 POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "username": "testuser",
-  "password": "password123"
+  "username": "sefa",
+  "password": "sefa123"
 }
 
-### Test Leaderboard
+
+### 🧪 Register (Create New User)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "password": "securepass"
+}
+
+
+### 🔍 Get All Users
+GET http://localhost:3000/users
+
+
+### 🔍 Get User by Username
+GET http://localhost:3000/users/newuser
+
+
+### 🔼 Increment Thanks Count
+POST http://localhost:3000//thanks/:id
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+
+### 🏆 Get Leaderboard (Sorted by Thanks)
 GET http://localhost:3000/leaderboard
+
+
+### 👤 Get User Profile (Badges + Info)
+GET http://localhost:3000/profile/newuser
+
+
+### 📣 Send Shout-Out
+POST http://localhost:3000/shouts
+Content-Type: application/json
+
+{
+  "sender": "Heidi",
+  "receiver": "Grace",
+  "message": "You're doing amazing work!"
+}
+
+
+### 📄 Get All Shout-Outs
+GET http://localhost:3000/shouts
+
+
+### ⚠️ (Dev Only) Reset Users Table (requires custom endpoint)
+# POST http://localhost:3000/dev/resetUsers
+# (Not implemented, just a placeholder in case you want admin/testing resets)

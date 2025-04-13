@@ -1,5 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./grazify.db', (err) => {
+const path = require('path');
+
+// Use the correct path to the existing database
+const dbPath = path.join(__dirname, '../grazify.db');
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Error opening database:', err.message);
         return;
@@ -19,11 +23,17 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
         } else {
             console.log('Users table verified.');
 
-
             const testUsers = [
                 { name: 'Alice', password: 'password123' },
                 { name: 'Bob', password: 'securepass' },
-                { name: 'Charlie', password: 'testpass' }
+                { name: 'Charlie', password: 'testpass' },
+                { name: 'Dave', password: 'mypassword' },
+                { name: 'Eve', password: 'password456' },
+                { name: 'Frank', password: 'frankspassword' },
+                { name: 'Grace', password: 'gracepass' },
+                { name: 'Heidi', password: 'heidipass' },
+                { name: 'Ivan', password: 'ivanpass' },
+                { name: 'Judy', password: 'judypassword' }
             ];
 
             testUsers.forEach(user => {
@@ -42,7 +52,6 @@ const db = new sqlite3.Database('./grazify.db', (err) => {
         }
     });
 });
-
 
 setTimeout(() => {
     db.close(() => {

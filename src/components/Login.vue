@@ -9,15 +9,36 @@
           <b-card-body>
             <b-form @submit.prevent="login">
               <b-form-group class="mb-3">
-                <b-form-input v-model="name" id="name" :placeholder="$t('login.username')" required></b-form-input>
+                <b-form-input
+                    v-model="name"
+                    id="name"
+                    :placeholder="$t('login.username')"
+                    required
+                ></b-form-input>
               </b-form-group>
               <b-form-group class="mb-3">
-                <b-form-input v-model="password" id="password" type="password" :placeholder="$t('login.password')"
-                              required></b-form-input>
+                <b-form-input
+                    v-model="password"
+                    id="password"
+                    type="password"
+                    :placeholder="$t('login.password')"
+                    required
+                ></b-form-input>
               </b-form-group>
               <div class="d-flex justify-content-center">
-                <b-button type="submit" variant="success" class="mr-3">{{ $t("login.loginButton") }}</b-button>
-                <b-button variant="primary" @click="showRegisterModal = true">{{ $t("login.signupButton") }}</b-button>
+                <b-button
+                    type="submit"
+                    variant="success"
+                    class="mr-3"
+                >
+                  {{ $t("login.loginButton") }}
+                </b-button>
+                <b-button
+                    variant="primary"
+                    @click="showRegisterModal = true"
+                >
+                  {{ $t("login.signupButton") }}
+                </b-button>
               </div>
             </b-form>
           </b-card-body>
@@ -29,25 +50,49 @@
       <div class="custom-modal">
         <div class="custom-modal-header">
           <h2>{{ $t("register.title") }}</h2>
-          <button class="close-btn" @click="showRegisterModal = false">&times;</button>
+          <button
+              class="close-btn"
+              @click="showRegisterModal = false"
+          >
+            &times;
+          </button>
         </div>
         <div class="custom-modal-body">
           <b-form @submit.prevent="register">
             <b-form-group :label="$t('register.username')">
-              <b-form-input v-model="newUser.name" required></b-form-input>
+              <b-form-input
+                  v-model="newUser.name"
+                  required
+              ></b-form-input>
             </b-form-group>
             <b-form-group :label="$t('register.password')">
-              <b-form-input v-model="newUser.password" type="password" required></b-form-input>
+              <b-form-input
+                  v-model="newUser.password"
+                  type="password"
+                  required
+              ></b-form-input>
             </b-form-group>
             <b-form-group :label="$t('register.confirmPassword')">
-              <b-form-input v-model="newUser.confirmPassword" type="password" required></b-form-input>
+              <b-form-input
+                  v-model="newUser.confirmPassword"
+                  type="password"
+                  required
+              ></b-form-input>
             </b-form-group>
             <div class="d-flex justify-content-end">
-              <b-button variant="secondary" class="mr-2" @click="showRegisterModal = false">{{
-                  $t("register.cancel")
-                }}
+              <b-button
+                  variant="secondary"
+                  class="mr-2"
+                  @click="showRegisterModal = false"
+              >
+                {{ $t("register.cancel") }}
               </b-button>
-              <b-button type="submit" variant="success">{{ $t("register.submit") }}</b-button>
+              <b-button
+                  type="submit"
+                  variant="success"
+              >
+                {{ $t("register.submit") }}
+              </b-button>
             </div>
           </b-form>
         </div>
@@ -91,7 +136,7 @@ export default {
               router.push(`/profile/${data.user.id}`);
             }
           })
-          .catch((err) => {
+          .catch(() => {
             alert(t("login.errorMessage"));
           });
     };
@@ -104,7 +149,10 @@ export default {
       fetch("http://localhost:3000/users/register", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({name: newUser.value.name, password: newUser.value.password}),
+        body: JSON.stringify({
+          name: newUser.value.name,
+          password: newUser.value.password,
+        }),
       })
           .then((res) => res.json())
           .then((data) => {

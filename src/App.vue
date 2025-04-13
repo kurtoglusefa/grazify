@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <!-- Language Switcher in the Top Right Corner -->
+    <!-- Language Switcher -->
     <div class="language-switcher-container">
       <LanguageSwitcher/>
     </div>
@@ -98,7 +98,6 @@ export default {
 </script>
 
 <style>
-
 .language-switcher-container {
   position: absolute;
   top: 10px;
@@ -106,45 +105,46 @@ export default {
   z-index: 1000;
 }
 
-
 .main-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  max-width: 1200px;
-  margin: 50px auto;
-  gap: 40px;
+  max-width: 1100px;
+  margin: 40px auto;
+  gap: 20px;
+  padding: 0 15px;
+  flex-wrap: wrap;
   position: relative;
   z-index: 1;
 }
 
-
-.left-column {
-  flex: 1;
-  padding: 15px;
-  border-right: 2px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
+.left-column,
+.center-column,
+.leaderboard {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
 }
 
+.left-column,
+.leaderboard {
+  flex: 1;
+  min-width: 280px;
+  max-width: 300px;
+}
 
 .center-column {
   flex: 2;
+  min-width: 320px;
+  max-width: 460px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  overflow-y: auto;
+  max-height: 85vh;
 }
-
-
-.leaderboard {
-  flex: 1;
-  padding: 15px;
-  border-left: 2px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-}
-
 
 .background {
   position: fixed;
@@ -152,9 +152,9 @@ export default {
   height: 100%;
   background-color: #0e4166;
   background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-
 
 .animated-waves {
   position: absolute;
@@ -163,7 +163,21 @@ export default {
   width: 100%;
   height: 100%;
   z-index: -1;
-  box-sizing: border-box;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-column,
+  .center-column,
+  .leaderboard {
+    width: 90%;
+    max-width: none;
+    border: none;
+  }
 }
 </style>

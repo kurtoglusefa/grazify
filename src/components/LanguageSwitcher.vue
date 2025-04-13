@@ -39,8 +39,8 @@ export default {
 }
 
 .flag-button {
-  width: 80px;
-  height: 50px;
+  width: 50px;
+  height: 30px;
   padding: 0;
   display: flex;
   align-items: center;
